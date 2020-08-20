@@ -18,7 +18,7 @@ const SumOfElements = () => (
 
 class SumOfElements extends React.Component {
     state = {
-        inputString: "23 15 1 67 0",
+        inputString: "",
         outputString: "",
     }
 
@@ -31,7 +31,7 @@ class SumOfElements extends React.Component {
             <div>
                 <p>Введите целые числа через пробел:</p>
                 <form>
-                    <input type="text" value={ this.state.inputString }/>
+                    <input type="text" value={ this.state.inputString } />
                     <input type="button" value="Отправить"/>
                 </form>
                 <p>Результат (сумма двух минимальных элементов из введенных):</p>
