@@ -36,21 +36,35 @@ class SumOfElements extends React.Component {
     processData(inputString) {
         //TODO проверить основные варианты и граничные условия
         let arr = this.parseToArray(inputString);
-        let sortedArr = this.getSortedArray(arr);
-        let result = sortedArr[0] + sortedArr[1];
+        let minElementsArr = this.getTwoMinElements(arr);
+        let result = minElementsArr[0] + minElementsArr[1];
 
         return result;
     }
 
     parseToArray(inputString) {
         //TODO реализовать конвертацию в массив
-        let resultArr = [23, 1, 45, 6, 89];
+        let resultArr = [100, 1, 45, 6, 89];
         return resultArr;
     }
 
-    getSortedArray(inputArr) {
-        //TODO реализовать сортировку
-        return [1, 6, 23, 45, 89];
+    getTwoMinElements(inputArr) {
+        let copyArr = inputArr.slice();
+        let currentNumber;
+        let result = [];
+
+        for (let j = 0; j < 2; j++) {
+            for (let i = inputArr.length - 1; i > 0; i--) {
+                if (copyArr[i] < copyArr[i - 1]) {
+                    currentNumber = copyArr[i - 1];
+                    copyArr[i - 1] = copyArr[i];
+                    copyArr[i] = currentNumber;
+                }
+            }
+        }
+        result.push(copyArr[0]);
+        result.push(copyArr[1]);
+        return result;
     }
 }
 
