@@ -18,12 +18,12 @@ const SumOfElements = () => (
 
 class SumOfElements extends React.Component {
     state = {
-        inputString: "",
+        inputString: "100 1 45 10 89",
         outputString: "",
     }
 
     render() {
-        this.state.outputString = this.processData("23 1 45 6 89");
+        this.state.outputString = this.processData(this.state.inputString);
         const { inputString, outputString } = this.state;
 
         return (
@@ -43,8 +43,11 @@ class SumOfElements extends React.Component {
     }
 
     parseToArray(inputString) {
-        //TODO реализовать конвертацию в массив
-        let resultArr = [100, 1, 45, 6, 89];
+        //TODO самому хоть еще проверить эту реализацию
+        let resultArr = inputString.split(' ');
+        for (let i = 0; i < resultArr.length; i++) {
+            resultArr[i] = Number(resultArr[i]);
+        }
         return resultArr;
     }
 
