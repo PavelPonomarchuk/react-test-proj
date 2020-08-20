@@ -17,9 +17,28 @@ const SumOfElements = () => (
 );*/
 
 class SumOfElements extends React.Component {
+    constructor(props) {
+        super(props);
+        this.state = {
+            inputString: "",
+            outputString: "",
+        };
+
+        this.handleChange = this.handleChange.bind(this);
+        this.handleSubmit = this.handleSubmit.bind(this);
+    }
+    /*
     state = {
         inputString: "",
         outputString: "",
+    }*/
+    handleChange(event) {
+        this.setState({inputString: event.target.value});
+    }
+
+    handleSubmit(event) {
+        alert('Отправленное имя: ' + this.state.value);
+        event.preventDefault();
     }
 
     render() {
@@ -27,11 +46,12 @@ class SumOfElements extends React.Component {
         const { inputString, outputString } = this.state;
 
         //TODO форму ещё наверное переделать и привязать к состоянию
+        //TODO потом почитать почему это всё так работает
         return (
             <div>
                 <p>Введите целые числа через пробел:</p>
-                <form>
-                    <input type="text" value={ this.state.inputString } />
+                <form onSubmit={this.handleSubmit}>
+                    <input type="text" value={ this.state.inputString } onChange={this.handleChange} />
                     <input type="button" value="Отправить"/>
                 </form>
                 <p>Результат (сумма двух минимальных элементов из введенных):</p>
