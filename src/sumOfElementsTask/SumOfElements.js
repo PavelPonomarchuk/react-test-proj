@@ -23,7 +23,6 @@ class SumOfElements extends React.Component {
             inputString: "",
             outputString: "",
         };
-
         this.handleChange = this.handleChange.bind(this);
         this.handleSubmit = this.handleSubmit.bind(this);
     }
@@ -37,7 +36,7 @@ class SumOfElements extends React.Component {
     }
 
     handleSubmit(event) {
-        alert('Отправленное имя: ' + this.state.value);
+        //alert(this.state.outputString); //работает
         event.preventDefault();
     }
 
@@ -51,11 +50,11 @@ class SumOfElements extends React.Component {
             <div>
                 <p>Введите целые числа через пробел:</p>
                 <form onSubmit={this.handleSubmit}>
-                    <input type="text" value={ this.state.inputString } onChange={this.handleChange} />
-                    <input type="button" value="Отправить"/>
+                    <input type="text" value={ this.state.inputString } onChange={this.handleChange}/>
+                    <input type="submit" value="Отправить" />
                 </form>
                 <p>Результат (сумма двух минимальных элементов из введенных):</p>
-                <Result result={ outputString }/>
+                <Result result={ outputString } />
             </div>
         );
     }
